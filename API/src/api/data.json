@@ -1,0 +1,27 @@
+{
+    "users": [{
+        "id": "1",
+        "name": "Byron",
+        "surname": "de Villiers",
+        "cellPhone": "0829123465",
+        "email": "byron@mail.com",
+        "password": "P@ssword",
+        "role": "provider"
+    }, {
+        "id": "4",
+        "name": "Brett",
+        "surname": "Ville",
+        "cellPhone": "0829123333",
+        "email": "brett@gmail.com",
+        "password": "P@sswords",
+        "role": "admin"
+    }, {
+        "id": "3",
+        "name": "Allison",
+        "surname": "Ville",
+        "cellPhone": "0829123422",
+        "email": "allison@mail.com",
+        "password": "P@sswords",
+        "role": "admin"
+    }]
+}

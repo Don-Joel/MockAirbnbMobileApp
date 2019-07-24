@@ -1,0 +1,62 @@
+<ion-header text-center>
+  <ion-toolbar>
+    <ion-title>Registration</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-content padding center text-center>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>
+          Sign Up
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list>
+          <ion-item>
+            <ion-input placeholder="Name" [(ngModel)]="name" type="text">
+            </ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input placeholder="Surname" [(ngModel)]="surName" type="text">
+            </ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input
+              placeholder="Cellphone"
+              [(ngModel)]="cellPhone"
+              type="text"
+            >
+            </ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input
+              placeholder="Email Adress"
+              [(ngModel)]="email"
+              type="text"
+            >
+            </ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input
+              placeholder="Password"
+              [(ngModel)]="password"
+              type="text"
+            >
+            </ion-input>
+          </ion-item>
+        </ion-list>
+
+        <ion-button
+          size="medium"
+          shape="round"
+          expand="full"
+          (click)="register()"
+        >
+          Registration <ion-icon slot="end" name="ios-arrow-forward"></ion-icon>
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </ion-content>
+</ion-content>

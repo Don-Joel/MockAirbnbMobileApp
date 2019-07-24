@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-title>
+        Welcome Back!
+      </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding center text-center>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>
+        Sign In
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+          <ion-list>
+              <ion-item>
+                <ion-input placeholder="Username" [(ngModel)]="email" type="text">
+                </ion-input>
+              </ion-item>
+              <ion-item>
+                  <ion-input placeholder="Password" type="password" [(ngModel)]="password">
+                  </ion-input>
+                </ion-item>
+            </ion-list>
+            <ion-button size="medium" shape="round" expand="full" (click)="login()" >
+              Log in<ion-icon slot="end" name="ios-arrow-forward">
+            </ion-icon></ion-button>
+            <ion-button  size = "medium" shape="round" expand="full" (click)="navToRegistration()">
+              Registration <ion-icon slot="end" name="ios-arrow-forward"></ion-icon>
+            </ion-button>
+            <button color="navy">
+              Forgot Password
+            </button>
+        
+          
+      </ion-card-content>
+     
+    </ion-card>
+    
+  
+  
+</ion-content>
