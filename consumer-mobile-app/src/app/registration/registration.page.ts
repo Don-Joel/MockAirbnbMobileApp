@@ -32,11 +32,21 @@ export class RegistrationPage {
     }
     async presentAlert(err) {
       const alert = await this.alertCtrl.create({
-        header: "Please fill out all credentials",
+        header: err,
         buttons: ["OK"]
       });
       await alert.present();
     }
+
+    async presentAlertCredentials(err) {
+      const alert = await this.alertCtrl.create({
+        header: err,
+        buttons: ["OK"]
+      });
+      await alert.present();
+    }
+
+
     register() {
       const authUser = {
         name: this.name,
@@ -59,7 +69,13 @@ export class RegistrationPage {
           }); // first page after login
         })
         .catch(err => {
-          this.presentAlert(err);
+          // if((authUser.email || authUser.name || authUser.surName || authUser.cellPhone || authUser.password) == null){
+          //   this.presentAlertCredentials(err.error.text);
+          // }
+          // else{
+            this.presentAlert(err.error.text);
+          // }
+          
         });
     }
 

@@ -32,13 +32,11 @@ export class AuthService {
     return new Promise((resolve, reject) => {
       const headers = new HttpHeaders();
       this.http
-        .post(environment.BaseUrl + '/api/auth/login', authUser, { headers })
+        .post(environment.BaseUrl + '/api/auth-user/login', authUser, { headers })
         .subscribe(
           (response: any) => {
             console.log(response.id);
             localStorage.setItem("userId", response.id);
-            localStorage.setItem("userEmail", response.email);
-            localStorage.setItem("userPassword", response.password);
             resolve(response);
           },
           err => {
@@ -52,7 +50,7 @@ export class AuthService {
     return new Promise((resolve, reject) => {
       const headers = new HttpHeaders();
 
-      this.http.post(environment.BaseUrl + '/api/auth/register' , authUser, {headers})
+      this.http.post(environment.BaseUrl + '/api/auth-user/register' , authUser, {headers})
       .subscribe(
         (response: any) => {
           console.log(response.id);

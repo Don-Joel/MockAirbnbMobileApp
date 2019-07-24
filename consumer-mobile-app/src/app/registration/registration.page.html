@@ -32,7 +32,7 @@
           </ion-item>
           <ion-item>
             <ion-input
-              placeholder="Email Adress"
+              placeholder="Email Address"
               [(ngModel)]="email"
               type="text"
             >
@@ -54,7 +54,11 @@
           expand="full"
           (click)="register()"
         >
-          Registration <ion-icon slot="end" name="ios-arrow-forward"></ion-icon>
+          Register <ion-icon slot="end" name="ios-arrow-forward"></ion-icon>
+        </ion-button>
+        <ion-button size="medium" shape="round" expand="full" (click)="navToHome()">
+          I Already Have An Account
+          <ion-icon slot="end" name="ios-arrow-forward"></ion-icon>
         </ion-button>
       </ion-card-content>
     </ion-card>

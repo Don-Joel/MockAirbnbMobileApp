@@ -29,19 +29,12 @@ export class HomePage {
 
     async presentAlert(err) {
       const alert = await this.alertCtrl.create({
-        header: "Incorrect login credentials",
+        header: err,
         buttons: ["OK"]
       });
       await alert.present();
     }
 
-    async presentIncorrectEmail(err){
-      const alert = await this.alertCtrl.create({
-        header: "Please Enter a Valid Email Address.",
-        buttons: ["OK"]
-      });
-      await alert.present();
-    }
     login() {
       const authUser = {
         email: this.email,
@@ -61,11 +54,7 @@ export class HomePage {
           }); // first page after login
         })
         .catch(err => {
-          this.presentAlert(err);
-          const testEmail = localStorage.getItem("userEmail");
-          if(authUser.email != testEmail){
-            this.presentIncorrectEmail(err);
-          }
+            this.presentAlert(err.error.text);
         });
     }
 
