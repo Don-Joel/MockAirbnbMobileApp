@@ -84,13 +84,8 @@ module.exports = class AuthService {
           if (dbUser.length >= 1) {
             if (dbUser[0].email == authUser.email) {
               reject("User email is already taken. Try again.");
-            } else if (
-              dbUser[0].email == undefined ||
-              dbUser[0].password == undefined ||
-              dbUser[0].name == undefined ||
-              dbUser[0].surName == undefined ||
-              dbUser[0].cellPhone == undefined
-            ) {
+            }
+            {
               reject("Please fill out the entire form.");
             }
           } else {
@@ -101,7 +96,7 @@ module.exports = class AuthService {
           }
         })
         .catch(err => {
-          reject(err);
+          reject("Please fill out the entire form");
         });
     });
   }
