@@ -16,7 +16,7 @@ constructor(private http: HttpClient, private navCtrl: NavController){}
 
 create(user: User){
     return new Promise((resolve, reject) =>{
-        this.http.post(environment.BaseUrl + '/api/user/createusers', user).subscribe(response => {
+        this.http.post(environment.BaseUrl + '/api/user/create', user).subscribe(response => {
             resolve(response);
         }),
         err =>{
@@ -28,7 +28,7 @@ create(user: User){
 
 getAll(){
     return new Promise((resolve, reject) =>{
-        this.http.get(environment.BaseUrl + '/api/user/getusers').subscribe(response => {
+        this.http.get(environment.BaseUrl + '/api/user/get').subscribe(response => {
             resolve(response);
         }),
         err =>{
@@ -39,7 +39,7 @@ getAll(){
 };
 getById(userId){
     return new Promise((resolve, reject) => {
-        this.http.get(environment.BaseUrl + '/api/user/getuserbyid/' + userId, userId).subscribe(response =>{
+        this.http.get(environment.BaseUrl + '/api/user/getbyid/' + userId, userId).subscribe(response =>{
             resolve(response);
         }),
         err =>{

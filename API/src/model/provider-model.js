@@ -32,14 +32,21 @@ module.exports = class Provider {
     });
   }
 
-  updateUserById(providerId, provider) {
+  updateByID(userId, user) {
     return new Promise((resolve, reject) => {
       mysqlConn.query(
-        "UPDATE user SET provider = ? WHERE id = ?",
-        [provider, providerId],
+        "UPDATE user SET name = ?, surname = ?, cellphone = ?, email = ?, password = ?, role = ? WHERE id = ?",
+        [
+          user.name,
+          user.surname,
+          user.cellphone,
+          user.email,
+          user.password,
+          user.role,
+          userId
+        ],
         (err, res) => {
           if (err) {
-            console.log("error: ", err);
             reject(err);
           } else {
             resolve(res);

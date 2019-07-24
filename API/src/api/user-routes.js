@@ -6,7 +6,7 @@ const router = express.Router();
 const User = require("../model/user-model");
 
 //get all of the users
-router.get("/getusers", (req, res) => {
+router.get("/get", (req, res) => {
   User.prototype
     .getAll()
     .then(users => {
@@ -18,7 +18,7 @@ router.get("/getusers", (req, res) => {
 });
 
 // get the user by ID
-router.get("/getuserbyid/:id", (req, res) => {
+router.get("/getbyid/:id", (req, res) => {
   User.prototype
     .getById(req.params.id)
     .then(users => {
@@ -30,7 +30,7 @@ router.get("/getuserbyid/:id", (req, res) => {
 });
 
 //create the user
-router.post("/createusers", (req, res) => {
+router.post("/create", (req, res) => {
   User.prototype
     .create(req.body)
     .then(users => {
