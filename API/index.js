@@ -25,6 +25,7 @@ app.use("/api/user", require("./src/api/user-routes"));
 app.use("/api/auth-user", require("./src/api/auth-user-routes"));
 app.use("/api/auth-provider", require("./src/api/auth-provider-routes"));
 app.use("/api/provider", require("./src/api/auth-provider-routes"));
+app.use("/api/properties", require("./src/api/properties-routes"));
 
 //Custom middleware
 app.use((req, res, next) => {

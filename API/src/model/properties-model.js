@@ -2,17 +2,17 @@
 const mysqlConn = require("../database/database");
 
 module.exports = class Properties {
-  constructor(name, location, imageURL, price) {
+  constructor(name, location, imageUrl, price) {
     this.name = name;
     this.location = location;
-    this.imageURL = imageURL;
+    this.imageUrl = imageUrl;
     this.price = price;
   }
 
   //post a new user
   create(newProperty) {
     return new Promise((resolve, reject) => {
-      mysqlConn.query("INSERT INTO provider set ?", newProperty, (err, res) => {
+      mysqlConn.query("INSERT INTO property set ?", newProperty, (err, res) => {
         if (err) {
           console.log("error: ", err);
           reject(err);
@@ -24,18 +24,16 @@ module.exports = class Properties {
     });
   }
 
-  updateByID(userId, user) {
+  updateById(propertyId, property) {
     return new Promise((resolve, reject) => {
       mysqlConn.query(
-        "UPDATE user SET name = ?, surname = ?, cellphone = ?, email = ?, password = ?, role = ? WHERE id = ?",
+        "UPDATE property SET name = ?, location = ?, imageUrl = ?, price = ? WHERE id = ?",
         [
-          user.name,
-          user.surname,
-          user.cellphone,
-          user.email,
-          user.password,
-          user.role,
-          userId
+          property.name,
+          property.location,
+          property.imageUrl,
+          property.price,
+          propertyId
         ],
         (err, res) => {
           if (err) {
@@ -52,7 +50,7 @@ module.exports = class Properties {
   remove(propertyId) {
     return new Promise((reject, resolve) => {
       mysqlConn.query(
-        "DELETE FROM provider WHERE id = ?",
+        "DELETE FROM property WHERE id = ?",
         propertyId,
         (err, res) => {
           if (err) {
@@ -67,11 +65,11 @@ module.exports = class Properties {
   }
 
   //Read by ID
-  getById(proiverId) {
+  getById(propertyId) {
     return new Promise((reject, resolve) => {
       mysqlConn.query(
-        "Select * from provider where id = ? ",
-        proiverId,
+        "Select * from property where id = ? ",
+        propertyId,
         (err, res) => {
           if (err) {
             reject(err);
@@ -86,7 +84,7 @@ module.exports = class Properties {
   //read all users
   getAll() {
     return new Promise((reject, resolve) => {
-      mysqlConn.query("Select * from provider", (err, res) => {
+      mysqlConn.query("Select * from property", (err, res) => {
         if (err) {
           reject(err);
         } else {

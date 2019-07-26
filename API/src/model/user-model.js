@@ -56,14 +56,14 @@ module.exports = class User {
     });
   }
 
-  updateByID(userId, user) {
+  updateById(userId, user) {
     return new Promise((resolve, reject) => {
       mysqlConn.query(
-        "UPDATE user SET name = ?, surname = ?, cellphone = ?, email = ?, password = ?, role = ? WHERE id = ?",
+        "UPDATE user SET name = ?, surName = ?, cellPhone = ?, email = ?, password = ?, role = ? WHERE id = ?",
         [
           user.name,
-          user.surname,
-          user.cellphone,
+          user.surName,
+          user.cellPhone,
           user.email,
           user.password,
           user.role,

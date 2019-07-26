@@ -86,7 +86,7 @@ module.exports = class AuthService {
               reject("User email is already taken. Try again.");
             }
             {
-              reject("Please fill out the entire form.");
+              reject("Please fill out all required fields.");
             }
           } else {
             User.prototype

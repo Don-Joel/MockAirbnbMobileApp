@@ -52,4 +52,10 @@ export class ProfilePage implements OnInit {
   navToHome(){
     this.navCtrl.navigateForward("home");
   }
+  navToMenu(){
+    this.navCtrl.navigateForward("menu");
+  }
+  navToProperties(){
+    this.navCtrl.navigateForward("properties");
+  }
 }

@@ -44,7 +44,7 @@ router.post("/create", (req, res) => {
 //update the user
 router.post("/update/:id", (req, res) => {
   User.prototype
-    .updateUserByID(req.params.id, req.body)
+    .updateById(req.params.id, req.body)
     .then(users => {
       res.send(users);
     })
