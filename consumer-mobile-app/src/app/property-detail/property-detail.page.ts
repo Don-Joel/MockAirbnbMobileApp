@@ -5,6 +5,7 @@ import { NavController, AlertController } from "@ionic/angular";
 
 
 
+
 @Component({
   selector: "app-properties",
   templateUrl: "./property-detail.page.html",
@@ -17,6 +18,7 @@ export class PropertyDetailPage implements OnInit {
   public price: string;
   public location: string;
   public imageUrl: string;
+  public today = new Date();
   
 
   public properties : Array<Properties>;
@@ -24,7 +26,7 @@ export class PropertyDetailPage implements OnInit {
   constructor(
     private alertCtrl: AlertController,
     private navCtrl: NavController,
-    private propertiesService: PropertiesService,
+    private propertiesService: PropertiesService
   ) {}
 
   async presentAlert(err) {
@@ -51,4 +53,5 @@ export class PropertyDetailPage implements OnInit {
   navToMenu(){
     this.navCtrl.navigateForward("menu");
   }
+
 }

@@ -12,12 +12,40 @@
 </ion-header>
 
 <ion-content>
-  <ion-card color="primary">
+  <ion-card color="light">
     <img src="{{ imageUrl }}" />
     <ion-card-header>
       <ion-card-subtitle>{{ location }}</ion-card-subtitle>
       <ion-card-title>{{ name }}</ion-card-title>
       <ion-label>{{ price }}</ion-label>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-card>
+    <ion-toolbar color="primary">
+      <ion-card-title text-center color="light" >
+        <i>Book Now</i>
+      </ion-card-title>
+    </ion-toolbar>
+    <ion-card-header>
+      <ion-item>
+        <ion-label color="primary"> Checkin:</ion-label>
+        <ion-datetime
+          displayFormat="DDDD MMM D, YYYY"
+          min="2019"
+          max="2021"
+          value="{{ today }}"
+        ></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary"> Checkout:</ion-label>
+        <ion-datetime
+          displayFormat="DDDD MMM D, YYYY"
+          min="2019"
+          max="2021"
+          value="{{ today }}"
+        ></ion-datetime>
+      </ion-item>
     </ion-card-header>
   </ion-card>
 </ion-content>

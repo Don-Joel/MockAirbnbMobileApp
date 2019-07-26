@@ -1,5 +1,7 @@
 {
   "name": "consumerApp",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
