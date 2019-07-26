@@ -58,11 +58,7 @@ export class RegistrationPage {
         const testId = localStorage.getItem("userId");
         console.log(testId);
 
-        this.navCtrl.navigateForward("profile", {
-          queryParams: {
-            user: res
-          }
-        }); // first page after login
+        this.navCtrl.navigateForward("properties"); // first page after login
       })
       .catch(err => {
         debugger;

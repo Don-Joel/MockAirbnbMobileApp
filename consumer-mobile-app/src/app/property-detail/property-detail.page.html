@@ -1,9 +1,23 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>propertyDetail</ion-title>
+    <ion-button
+      shape="round"
+      size="small"
+      onclick="history.back()"
+      color="danger"
+      >Back</ion-button
+    >
+    <h1>{{ name }}</h1>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-card color="primary">
+    <img src="{{ imageUrl }}" />
+    <ion-card-header>
+      <ion-card-subtitle>{{ location }}</ion-card-subtitle>
+      <ion-card-title>{{ name }}</ion-card-title>
+      <ion-label>{{ price }}</ion-label>
+    </ion-card-header>
+  </ion-card>
 </ion-content>

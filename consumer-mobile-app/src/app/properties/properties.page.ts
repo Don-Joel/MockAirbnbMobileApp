@@ -15,7 +15,8 @@ export class PropertiesPage implements OnInit {
   public location: string;
   public imageUrl: string;
 
-  public properties : Array<Properties>;
+  //array
+  public properties : Array<Properties> = [];
 
   constructor(
     private alertCtrl: AlertController,
@@ -33,9 +34,22 @@ export class PropertiesPage implements OnInit {
 
   ngOnInit() {
     this.propertiesService.getAll().then((response : any) => {
-      this.properties = response; 
+      this.properties = response;
     }).catch((err) => {
       this.presentAlert(err);
     });
+  }
+
+  navToDetailsPage(pageId){
+    this.navCtrl.navigateForward("property-detail", {
+      queryParams: {
+       propertyId : pageId
+      }
+
+    });
+  }
+
+  navToMenu(){
+    this.navCtrl.navigateForward("menu")
   }
 }
