@@ -48,6 +48,7 @@ export class PropertiesPage implements OnInit {
 
     });
   }
+  
 
   navToMenu(){
     this.navCtrl.navigateForward("menu")

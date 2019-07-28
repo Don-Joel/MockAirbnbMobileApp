@@ -1,10 +1,12 @@
 const mysqlConn = require("../database/database");
 
 module.exports = class BookingRequests {
-  constructor(dateFrom, dateTo, userId) {
+  constructor(dateFrom, dateTo, userId, propertyId, status) {
     this.dateFrom = dateFrom;
     this.dateTo = dateTo;
     this.userId = userId;
+    this.propertyId = propertyId;
+    this.status = status;
   }
 
   //post a new user
@@ -25,7 +27,7 @@ module.exports = class BookingRequests {
   updateById(id, booking) {
     return new Promise((resolve, reject) => {
       mysqlConn.query(
-        "UPDATE user SET dateTo = ?, userId = ?, dateFrom = ?, propertyId = ?, status= ?WHERE id = ?",
+        "UPDATE booking SET dateTo = ?, userId = ?, dateFrom = ?, propertyId = ?, status= ?WHERE id = ?",
         [
           booking.dateTo,
           booking.userId,

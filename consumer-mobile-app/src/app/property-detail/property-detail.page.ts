@@ -1,7 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { PropertiesService } from ".././services/properties.service";
 import { Properties } from ".././models/properties-models";
+import { BookingService } from ".././services/booking.service"
 import { NavController, AlertController } from "@ionic/angular";
+import { ToastController } from '@ionic/angular';
 
 
 
@@ -12,13 +14,25 @@ import { NavController, AlertController } from "@ionic/angular";
   styleUrls: ["./property-detail.page.scss"]
 })
 export class PropertyDetailPage implements OnInit {
+
   public propertyId : number;
   public id: number;
   public name: string;
   public price: string;
+  public userId : number;
   public location: string;
   public imageUrl: string;
   public today = new Date();
+  public dateTo = new Date().toISOString();
+
+  //making new data and parsing it into a string
+  public dateFrom = new Date().toISOString();
+  public status = {
+    newBooking: "NEW",
+    accepted: "ACCEPTED",
+    rejected: "REJECTED"
+  };
+  
   
 
   public properties : Array<Properties>;
@@ -26,7 +40,9 @@ export class PropertyDetailPage implements OnInit {
   constructor(
     private alertCtrl: AlertController,
     private navCtrl: NavController,
-    private propertiesService: PropertiesService
+    private propertiesService: PropertiesService,
+    private bookingService : BookingService,
+    public toastController: ToastController
   ) {}
 
   async presentAlert(err) {
@@ -37,13 +53,27 @@ export class PropertyDetailPage implements OnInit {
     await alert.present();
   }
 
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'Booked!',
+      duration: 2000
+    });
+    toast.present();
+  }
+
+
   ngOnInit() {
     const params = new URLSearchParams(location.search)
-    this.propertiesService.getById(params.get('propertyId')).then((response) => {
+    const id = +params.get('propertyId');
+
+    this.propertiesService.getById(id).then((response) => {
       this.name = response[0].name;
       this.price = response[0].price;
       this.location = response[0].location;
       this.imageUrl = response[0].imageUrl;
+      this.propertyId = id;
+      console.log(this.dateFrom);
+      console.log(this.dateTo);
     }).catch((err) => {
       this.presentAlert(err);
     });
@@ -53,5 +83,40 @@ export class PropertyDetailPage implements OnInit {
   navToMenu(){
     this.navCtrl.navigateForward("menu");
   }
+
+  //checking for date values
+  dateToChanged(date){
+    console.log(date.detail.value);
+    console.log(this.dateTo);
+  }
+
+  dateFromChanged(date){
+    //value after change
+    console.log(date.detail.value);
+    //my dateFrom value 
+    console.log(this.dateFrom);
+  }
+
+
+    book(){
+      const booker = {
+            dateFrom : this.dateFrom,
+            dateTo : this.dateTo,
+            userId : +localStorage.getItem("userId"),
+            propertyId : this.propertyId,
+            status : this.status.accepted
+      };
+      this.bookingService.create(booker).then((response) => {
+        this.presentToast();
+        
+      }).catch((err) => {
+        this.presentAlert(err);
+      });
+  
+    }
+  
+
+
+
 
 }
