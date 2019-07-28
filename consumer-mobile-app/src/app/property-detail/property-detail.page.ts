@@ -18,7 +18,7 @@ export class PropertyDetailPage implements OnInit {
   public propertyId : number;
   public id: number;
   public name: string;
-  public price: string;
+  public price: number;
   public userId : number;
   public location: string;
   public imageUrl: string;
@@ -68,7 +68,7 @@ export class PropertyDetailPage implements OnInit {
 
     this.propertiesService.getById(id).then((response) => {
       this.name = response[0].name;
-      this.price = response[0].price;
+      this.price = parseInt(response[0].price);
       this.location = response[0].location;
       this.imageUrl = response[0].imageUrl;
       this.propertyId = id;
