@@ -36,6 +36,7 @@ export class AuthService {
         .subscribe(
           (response: any) => {
             console.log(response.id);
+            console.log(response);
             localStorage.setItem("userId", response.id);
             resolve(response);
           },
@@ -53,8 +54,9 @@ export class AuthService {
       this.http.post(environment.BaseUrl + '/api/auth-user/register' , authUser, {headers})
       .subscribe(
         (response: any) => {
-          console.log(response.id);
-          localStorage.setItem("userid", response.id);
+          console.log(response.insertId);
+          console.log(response);
+          localStorage.setItem("userId", response.insertId);
           resolve(response);
         },
         err => {
