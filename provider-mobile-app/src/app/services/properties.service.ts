@@ -1,22 +1,23 @@
 import { Injectable } from '@angular/core';
-import { Provider } from '../models/provider-models';
+import { Properties } from '../models/properties-models';
 import { HttpClient } from '@angular/common/http';
 import { NavController } from '@ionic/angular';
 import { environment } from '../../environments/environment';
+
 
 @Injectable({
     providedIn: 'root'
 })
 
-export class ProviderService {
-    public provider: Provider = new Provider();
+export class PropertiesService {
+    public property: Properties = new Properties();
 
 constructor(private http: HttpClient, private navCtrl: NavController){}
 // CRUD:
 
-create(provider: Provider){
+create(property: Properties){
     return new Promise((resolve, reject) =>{
-        this.http.post(environment.BaseUrl + '/api/user/', provider).subscribe(response => {
+        this.http.post(environment.BaseUrl + '/api/properties/create', property).subscribe(response => {
             resolve(response);
         }),
         err =>{
@@ -28,7 +29,7 @@ create(provider: Provider){
 
 getAll(){
     return new Promise((resolve, reject) =>{
-        this.http.get(environment.BaseUrl + '/api/user/').subscribe(response => {
+        this.http.get(environment.BaseUrl + '/api/properties/get').subscribe(response => {
             resolve(response);
         }),
         err =>{
@@ -37,9 +38,9 @@ getAll(){
         }
     });
 };
-getById(providerId){
+getById(Id){
     return new Promise((resolve, reject) => {
-        this.http.get(environment.BaseUrl + '/api/user/:id', providerId).subscribe(response =>{
+        this.http.get(environment.BaseUrl + '/api/properties/getbyid/' + Id, Id).subscribe(response =>{
             resolve(response);
         }),
         err =>{
@@ -48,9 +49,9 @@ getById(providerId){
         }
     });
 };
-updateById(providerId){
+updateById(Id){
     return new Promise((resolve, reject) => {
-        this.http.post(environment.BaseUrl + '/api/user/update', providerId).subscribe(response =>{
+        this.http.post(environment.BaseUrl + '/api/properties/update/' + Id, Id).subscribe(response =>{
             resolve(response);
         }),
         err =>{
@@ -60,9 +61,9 @@ updateById(providerId){
     });
 };
 
-remove(providerId){
+remove(Id){
     return new Promise((resolve, reject) => {
-        this.http.post(environment.BaseUrl + '/api/user/delete', providerId).subscribe(response =>{
+        this.http.post(environment.BaseUrl + '/api/properties/delete/' + Id, Id).subscribe(response =>{
             resolve(response);
         }),
         err =>{

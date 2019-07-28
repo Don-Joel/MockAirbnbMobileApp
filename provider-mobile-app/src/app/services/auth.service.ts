@@ -32,7 +32,7 @@ export class AuthService {
     return new Promise((resolve, reject) => {
       const headers = new HttpHeaders();
       this.http
-        .post("http://localhost:3000/api/auth/login", authUser, { headers })
+        .post(environment.BaseUrl + '/api/auth-user/login', authUser, { headers })
         .subscribe(
           (response: any) => {
             console.log(response.id);
@@ -50,7 +50,7 @@ export class AuthService {
     return new Promise((resolve, reject) => {
       const headers = new HttpHeaders();
 
-      this.http.post(environment.BaseUrl + '/api/auth/register' , authUser, {headers})
+      this.http.post(environment.BaseUrl + '/api/auth-user/register' , authUser, {headers})
       .subscribe(
         (response: any) => {
           console.log(response.id);

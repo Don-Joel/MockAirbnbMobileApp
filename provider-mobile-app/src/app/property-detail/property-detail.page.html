@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button
+      shape="round"
+      size="small"
+      onclick="history.back()"
+      color="danger"
+      >Back</ion-button
+    >
+    <h1 text-center>{{ name }}</h1>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+      <ion-slides>
+          <ion-slide>
+            <img src="{{ imageUrl }}" />
+          </ion-slide>
+          <ion-slide>
+            <img src="{{ imageUrl }}" />
+          </ion-slide>
+          <ion-slide>
+            <img src="{{ imageUrl }}" />
+          </ion-slide>
+        </ion-slides>
+    <ion-card-header>
+      <ion-card-subtitle>{{ location }}</ion-card-subtitle>
+      <ion-card-title>{{ name }}</ion-card-title>
+      
+    </ion-card-header>
+  </ion-card>
+
+  <ion-card>
+    <ion-toolbar color="primary" font="12">
+      <ion-card-title style="float:left-center"color="light">
+          <h5><b>{{ price }}</b></h5>
+      </ion-card-title>
+    </ion-toolbar>
+    <ion-card-header>
+      <ion-item>
+        <ion-label color="primary"> Check-in:</ion-label>
+        <ion-datetime [(ngModel)]="dateTo"
+          displayFormat="DDDD MMM D, YYYY"
+          min="2019"
+          max="2021"
+          value="{{ today }}"
+          (ionChange)="dateToChanged($event)"
+        ></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary"> Checkout:</ion-label>
+        <ion-datetime [(ngModel)]="dateFrom"
+          displayFormat="DDDD MMM D, YYYY"
+          min="2019"
+          max="2021"
+          value="{{ today }}"
+          (ionChange)="dateFromChanged($event)"
+        ></ion-datetime>
+      </ion-item>
+    </ion-card-header>
+    <ion-button style="float:center" expand="full" fill="solid" shape="round" (click)="book()"
+      >Book</ion-button
+    >
+  </ion-card>
+  
+</ion-content>

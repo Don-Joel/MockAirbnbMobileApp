@@ -8,7 +8,11 @@ const routes: Routes = [
   { path: 'trips', loadChildren: './trips/trips.module#TripsPageModule' },
   { path: 'listings', loadChildren: './listings/listings.module#ListingsPageModule' },
   { path: 'saved', loadChildren: './saved/saved.module#SavedPageModule' },
-  { path: 'registration', loadChildren: './registration/registration.module#RegistrationPageModule' }
+  { path: 'registration', loadChildren: './registration/registration.module#RegistrationPageModule' },
+  { path: 'menu', loadChildren: './menu/menu.module#MenuPageModule' },
+  { path: 'properties', loadChildren: './properties/properties.module#PropertiesPageModule' },
+  { path: 'property-detail', loadChildren: './property-detail/property-detail.module#PropertyDetailPageModule' },
+  { path: 'booking', loadChildren: './booking/booking.module#BookingPageModule' }
 ];
 
 @NgModule({

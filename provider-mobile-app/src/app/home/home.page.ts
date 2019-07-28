@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController , AlertController } from '@ionic/angular';
-import { Provider } from "../models/provider-models";
-import { ProviderService } from "../services/provider.service";
+import { User } from ".././models/user-models";
+import { UserService } from ".././services/user.service";
 import { AuthService } from ".././services/auth.service";
+import { ElementFinder } from 'protractor';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,7 @@ import { AuthService } from ".././services/auth.service";
 })
 export class HomePage {
 
-    public provider = new Provider();
+    public user = new User();
     public email: string;
     public password: string;
     public users: any;
@@ -20,18 +21,20 @@ export class HomePage {
     constructor(
       private navCtrl: NavController,
       private alertCtrl: AlertController,
-      private providerService: ProviderService,
+      private userService: UserService,
       private authService: AuthService
     ) {
-      this.provider = providerService.provider;
+      this.user = userService.user;
     }
+
     async presentAlert(err) {
       const alert = await this.alertCtrl.create({
-        header: "Incorrect login credentials",
+        header: err,
         buttons: ["OK"]
       });
       await alert.present();
     }
+
     login() {
       const authUser = {
         email: this.email,
@@ -42,16 +45,12 @@ export class HomePage {
         .then(res => {
           const testId = localStorage.getItem("userId");
           console.log(testId);
-          console.log("lol");
+          
   
-          this.navCtrl.navigateForward("profile", {
-            queryParams: {
-              user: res
-            }
-          }); // first page after login
+          this.navCtrl.navigateForward("properties"); // first page after login
         })
         .catch(err => {
-          this.presentAlert(err);
+            this.presentAlert(err.error.text);
         });
     }
 
