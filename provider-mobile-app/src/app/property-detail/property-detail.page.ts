@@ -47,7 +47,7 @@ export class PropertyDetailPage implements OnInit {
 
   async presentAlert(err) {
     const alert = await this.alertCtrl.create({
-      header: err,
+      header: "Error",
       buttons: ["OK"]
     });
     await alert.present();
@@ -83,6 +83,11 @@ export class PropertyDetailPage implements OnInit {
   navToMenu(){
     this.navCtrl.navigateForward("menu");
   }
+
+  navToEditPage(){
+    this.navCtrl.navigateForward("edit-page");
+  }
+
 
   //checking for date values
   dateToChanged(date){

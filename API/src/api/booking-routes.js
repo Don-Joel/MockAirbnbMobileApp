@@ -3,10 +3,10 @@ const express = require("express");
 //
 const router = express.Router();
 
-//import properties class
+//import bookings class
 const Booking = require("../model/bookings-model");
 
-//get all of the properties
+//get all of the bookings
 router.get("/get", (req, res) => {
   Booking.prototype
     .getAll()
@@ -18,7 +18,7 @@ router.get("/get", (req, res) => {
     });
 });
 
-// get the property by ID
+// get the booking by ID
 router.get("/getbyid/:id", (req, res) => {
   Booking.prototype
     .getById(req.params.id)
@@ -30,7 +30,19 @@ router.get("/getbyid/:id", (req, res) => {
     });
 });
 
-//create the property
+// get the booking by property ID
+router.get("/getbyPropertyId/:id", (req, res) => {
+  Booking.prototype
+    .getByPropertyId(req.params.id)
+    .then(bookings => {
+      res.send(bookings);
+    })
+    .catch(err => {
+      res.send(err);
+    });
+});
+
+//create the booking
 router.post("/create", (req, res) => {
   Booking.prototype
     .create(req.body)
@@ -42,7 +54,7 @@ router.post("/create", (req, res) => {
     });
 });
 
-//update the property
+//update the booking
 router.post("/update/:id", (req, res) => {
   Booking.prototype
     .updateById(req.params.id, req.body)
@@ -54,7 +66,7 @@ router.post("/update/:id", (req, res) => {
     });
 });
 
-//delete property
+//delete booking
 router.delete("/delete/:id", (req, res) => {
   Booking.prototype
     .removeUser(req.body)

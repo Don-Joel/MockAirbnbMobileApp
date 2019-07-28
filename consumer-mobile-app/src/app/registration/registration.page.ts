@@ -29,7 +29,7 @@ export class RegistrationPage {
   }
   async presentAlert(err) {
     const alert = await this.alertCtrl.create({
-      header: err,
+      header: "Email already taken.",
       buttons: ["OK"]
     });
     await alert.present();
@@ -37,7 +37,7 @@ export class RegistrationPage {
 
   async presentAlertCredentials(err) {
     const alert = await this.alertCtrl.create({
-      header: err,
+      header: "Please fill in form.",
       buttons: ["OK"]
     });
     await alert.present();

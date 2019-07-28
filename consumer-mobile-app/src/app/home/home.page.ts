@@ -29,7 +29,7 @@ export class HomePage {
 
     async presentAlert(err) {
       const alert = await this.alertCtrl.create({
-        header: err,
+        header: "Incorrect login credentials.",
         buttons: ["OK"]
       });
       await alert.present();

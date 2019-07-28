@@ -29,7 +29,15 @@ export class RegistrationPage {
   }
   async presentAlert(err) {
     const alert = await this.alertCtrl.create({
-      header: err,
+      header: "Email already taken.",
+      buttons: ["OK"]
+    });
+    await alert.present();
+  }
+
+  async presentEmailAlert(err) {
+    const alert = await this.alertCtrl.create({
+      header: "Email already taken." ,
       buttons: ["OK"]
     });
     await alert.present();
@@ -37,7 +45,7 @@ export class RegistrationPage {
 
   async presentAlertCredentials(err) {
     const alert = await this.alertCtrl.create({
-      header: err,
+      header: "Please fill in credentials.",
       buttons: ["OK"]
     });
     await alert.present();
@@ -69,9 +77,9 @@ export class RegistrationPage {
             authUser.cellPhone ||
             authUser.password) == null
         ) {
-          this.presentAlertCredentials(err.statusText);
+          this.presentAlertCredentials(err);
         } else {
-          this.presentAlert(err.error.text);
+          this.presentAlert(err);
         }
       });
   }

@@ -13,34 +13,45 @@
 
 <ion-content>
   <ion-card>
-      <ion-slides>
-          <ion-slide>
-            <img src="{{ imageUrl }}" />
-          </ion-slide>
-          <ion-slide>
-            <img src="{{ imageUrl }}" />
-          </ion-slide>
-          <ion-slide>
-            <img src="{{ imageUrl }}" />
-          </ion-slide>
-        </ion-slides>
+    <ion-slides>
+      <ion-slide>
+        <img src="{{ imageUrl }}" />
+      </ion-slide>
+      <ion-slide>
+        <img src="{{ imageUrl }}" />
+      </ion-slide>
+      <ion-slide>
+        <img src="{{ imageUrl }}" />
+      </ion-slide>
+    </ion-slides>
     <ion-card-header>
       <ion-card-subtitle>{{ location }}</ion-card-subtitle>
       <ion-card-title>{{ name }}</ion-card-title>
-      
     </ion-card-header>
   </ion-card>
 
   <ion-card>
     <ion-toolbar color="primary" font="12">
-      <ion-card-title style="float:left-center"color="light">
-          <h5><b>{{ price }}</b></h5>
+      <ion-card-title style="float:left-center" color="light">
+        <h5>
+          <b>{{ price }}</b>
+        </h5>
       </ion-card-title>
+      <ion-button
+        style="float:right"
+        color="light"
+        expand="full"
+        fill="solid"
+        shape="round"
+        (click)="navToEditPage()"
+        >Edit</ion-button
+      >
     </ion-toolbar>
     <ion-card-header>
       <ion-item>
         <ion-label color="primary"> Check-in:</ion-label>
-        <ion-datetime [(ngModel)]="dateTo"
+        <ion-datetime
+          [(ngModel)]="dateTo"
           displayFormat="DDDD MMM D, YYYY"
           min="2019"
           max="2021"
@@ -50,7 +61,8 @@
       </ion-item>
       <ion-item>
         <ion-label color="primary"> Checkout:</ion-label>
-        <ion-datetime [(ngModel)]="dateFrom"
+        <ion-datetime
+          [(ngModel)]="dateFrom"
           displayFormat="DDDD MMM D, YYYY"
           min="2019"
           max="2021"
@@ -59,9 +71,13 @@
         ></ion-datetime>
       </ion-item>
     </ion-card-header>
-    <ion-button style="float:center" expand="full" fill="solid" shape="round" (click)="book()"
+    <ion-button
+      style="float:center"
+      expand="full"
+      fill="solid"
+      shape="round"
+      (click)="book()"
       >Book</ion-button
     >
   </ion-card>
-  
 </ion-content>

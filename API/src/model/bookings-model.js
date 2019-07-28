@@ -74,6 +74,22 @@ module.exports = class BookingRequests {
     });
   }
 
+  getByPropertyId(propertyId) {
+    return new Promise((reject, resolve) => {
+      mysqlConn.query(
+        "Select * from booking where propertyId = ? ",
+        propertyId,
+        (err, res) => {
+          if (err) {
+            reject(err);
+          } else {
+            resolve(res);
+          }
+        }
+      );
+    });
+  }
+
   //read all users
   getAll() {
     return new Promise((resolve, reject) => {

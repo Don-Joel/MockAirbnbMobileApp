@@ -45,6 +45,19 @@ getById(Id){
         }
     });
 };
+
+getByPropertyId(propertyId){
+    return new Promise((resolve, reject) => {
+        this.http.get(environment.BaseUrl + '/api/bookings/getbyPropertyId/' + propertyId, propertyId).subscribe(response =>{
+            resolve(response);
+        }),
+        err =>{
+            console.log(err);
+            reject(err.msg);
+        }
+    });
+};
+
 updateById(Id){
     return new Promise((resolve, reject) => {
         this.http.post(environment.BaseUrl + '/api/bookings/update/' + Id, Id).subscribe(response =>{

@@ -27,7 +27,7 @@ export class ProfilePage implements OnInit {
 
   async presentAlert(err) {
     const alert = await this.alertCtrl.create({
-      header: err,
+      header: "Error",
       buttons: ["OK"]
     });
     await alert.present();
@@ -45,7 +45,8 @@ export class ProfilePage implements OnInit {
           this.cellPhone = response[0].cellPhone;
       })
       .catch(err => {
-        this.presentAlert(err.statusText);
+        this.presentAlert(err)
+        ;
       });
   }
 

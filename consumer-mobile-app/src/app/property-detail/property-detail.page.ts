@@ -47,7 +47,7 @@ export class PropertyDetailPage implements OnInit {
 
   async presentAlert(err) {
     const alert = await this.alertCtrl.create({
-      header: err,
+      header: "Error",
       buttons: ["OK"]
     });
     await alert.present();
