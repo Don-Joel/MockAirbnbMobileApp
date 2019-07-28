@@ -63,7 +63,7 @@ module.exports = class AuthProviderService {
               reject("incorrect password");
             }
           } else {
-            reject("user not found");
+            reject("User not found. Please enter a correct email address.");
           }
         })
         .catch(err => {
@@ -77,14 +77,16 @@ module.exports = class AuthProviderService {
     return new Promise((resolve, reject) => {
       Provider.prototype
         .getAll()
-        .then(providers => {
-          console.log("lol");
-          const dbUser = providers.filter(provider => {
-            return provider.email == authUser.email;
+        .then(users => {
+          const dbUser = users.filter(user => {
+            return user.email == authUser.email;
           });
           if (dbUser.length >= 1) {
             if (dbUser[0].email == authUser.email) {
               reject("User email is already taken. Try again.");
+            }
+            {
+              reject("Please fill out all required fields.");
             }
           } else {
             Provider.prototype
@@ -94,7 +96,7 @@ module.exports = class AuthProviderService {
           }
         })
         .catch(err => {
-          reject(err);
+          reject("Please fill out the entire form");
         });
     });
   }

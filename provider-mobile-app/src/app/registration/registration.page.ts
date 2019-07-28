@@ -2,7 +2,7 @@ import { Component } from "@angular/core";
 import { NavController, AlertController } from "@ionic/angular";
 import { User } from ".././models/user-models";
 import { UserService } from ".././services/user.service";
-import { AuthService } from ".././services/auth.service";
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: "app-registration",
@@ -15,7 +15,7 @@ export class RegistrationPage {
   public password: string;
   public users: any;
   public cellPhone: string;
-  public surName: string;
+  public lastName: string;
   public name: string;
   public role: string;
 
@@ -54,11 +54,11 @@ export class RegistrationPage {
   register() {
     const authUser = {
       name: this.name,
-      surName: this.surName,
+      lastName: this.lastName,
       cellPhone: this.cellPhone,
       email: this.email,
       password: this.password,
-      role: "user"
+      role: "provider"
     };
     this.authService
       .register(authUser)
@@ -73,7 +73,7 @@ export class RegistrationPage {
         if (
           (authUser.email ||
             authUser.name ||
-            authUser.surName ||
+            authUser.lastName ||
             authUser.cellPhone ||
             authUser.password) == null
         ) {

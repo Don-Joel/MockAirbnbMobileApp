@@ -14,6 +14,9 @@ export class PropertiesPage implements OnInit {
   public price: string;
   public location: string;
   public imageUrl: string;
+  public userId : number;
+  public params = new URLSearchParams(location.search);
+  public providerId : number = +this.params.get('propertyId');
 
   //array
   public properties : Array<Properties> = [];
@@ -33,7 +36,8 @@ export class PropertiesPage implements OnInit {
   }
 
   ngOnInit() {
-    this.propertiesService.getAll().then((response : any) => {
+    this.userId = +localStorage.getItem('userId');
+    this.propertiesService.getByProviderId(this.userId).then((response : any) => {
       this.properties = response;
     }).catch((err) => {
       this.presentAlert(err);
@@ -44,9 +48,9 @@ export class PropertiesPage implements OnInit {
     this.navCtrl.navigateForward("property-detail", {
       queryParams: {
        propertyId : pageId
-      }
-
+      }    
     });
+    
   }
   navToProfile(){
     this.navCtrl.navigateForward("profile");
@@ -55,6 +59,10 @@ export class PropertiesPage implements OnInit {
     this.navCtrl.navigateForward("home");
   }
   navToMenu(){
-    this.navCtrl.navigateForward("menu")
+    this.navCtrl.navigateForward("menu");
   }
+  navToCreateListing(){
+    this.navCtrl.navigateForward("create-property");
+  }
+ 
 }

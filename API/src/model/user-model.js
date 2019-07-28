@@ -32,13 +32,13 @@ const roles = {
 };
 
 module.exports = class User {
-  constructor(surName, name, cellPhone, email, password) {
+  constructor(surName, name, cellPhone, email, password, role) {
     this.name = name;
     this.surName = surName;
     this.cellPhone = cellPhone;
     this.email = email;
     this.password = password;
-    this.role = roles.ADMIN;
+    this.role = role;
   }
 
   //post a new user

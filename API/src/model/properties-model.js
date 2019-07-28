@@ -2,11 +2,12 @@
 const mysqlConn = require("../database/database");
 
 module.exports = class Properties {
-  constructor(name, location, imageUrl, price) {
+  constructor(name, location, imageUrl, price, providerId) {
     this.name = name;
     this.location = location;
     this.imageUrl = imageUrl;
     this.price = price;
+    this.providerId = providerId;
   }
 
   //post a new user
@@ -70,6 +71,22 @@ module.exports = class Properties {
       mysqlConn.query(
         "Select * from property where id = ? ",
         propertyId,
+        (err, res) => {
+          if (err) {
+            reject(err);
+          } else {
+            resolve(res);
+          }
+        }
+      );
+    });
+  }
+
+  getByProviderId(providerId) {
+    return new Promise((reject, resolve) => {
+      mysqlConn.query(
+        "Select * from property where providerId = ? ",
+        providerId,
         (err, res) => {
           if (err) {
             reject(err);

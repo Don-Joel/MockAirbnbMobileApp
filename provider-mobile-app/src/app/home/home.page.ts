@@ -50,7 +50,7 @@ export class HomePage {
           this.navCtrl.navigateForward("properties"); // first page after login
         })
         .catch(err => {
-            this.presentAlert(err.error.text);
+            this.presentAlert(err);
         });
     }
 

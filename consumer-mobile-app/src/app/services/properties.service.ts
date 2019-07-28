@@ -49,9 +49,9 @@ getById(Id){
         }
     });
 };
-updateById(Id){
+updateById(Id, body){
     return new Promise((resolve, reject) => {
-        this.http.post(environment.BaseUrl + '/api/properties/update/' + Id, Id).subscribe(response =>{
+        this.http.post(environment.BaseUrl + '/api/properties/update/' + Id, body).subscribe(response =>{
             resolve(response);
         }),
         err =>{

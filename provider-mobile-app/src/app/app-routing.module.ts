@@ -13,7 +13,9 @@ const routes: Routes = [
   { path: 'properties', loadChildren: './properties/properties.module#PropertiesPageModule' },
   { path: 'property-detail', loadChildren: './property-detail/property-detail.module#PropertyDetailPageModule' },
   { path: 'booking', loadChildren: './booking/booking.module#BookingPageModule' },
-  { path: 'edit-page', loadChildren: './edit-page/edit-page.module#EditPagePageModule' }
+  { path: 'edit-page', loadChildren: './edit-page/edit-page.module#EditPagePageModule' },
+  { path: 'create-property', loadChildren: './create-property/create-property.module#CreatePropertyPageModule' },
+  { path: 'delete-property', loadChildren: './delete-property/delete-property.module#DeletePropertyPageModule' }
 ];
 
 @NgModule({

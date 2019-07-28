@@ -1,20 +1,14 @@
 //const fs = require('fs');
 const mysqlConn = require("../database/database");
 
-const roles = {
-  ADMIN: "admin",
-  PROVIDER: "provider",
-  USER: "user"
-};
-
 module.exports = class Provider {
-  constructor(name, lastName, cellPhone, email, password) {
+  constructor(name, lastName, cellPhone, email, password, role) {
     this.name = name;
     this.lastName = lastName;
     this.cellPhone = cellPhone;
     this.email = email;
     this.password = password;
-    this.role = roles.PROVIDER;
+    this.role = role;
   }
 
   //post a new user
@@ -35,11 +29,11 @@ module.exports = class Provider {
   updateByID(userId, user) {
     return new Promise((resolve, reject) => {
       mysqlConn.query(
-        "UPDATE user SET name = ?, surname = ?, cellphone = ?, email = ?, password = ?, role = ? WHERE id = ?",
+        "UPDATE user SET name = ?, lastName = ?, cellPhone = ?, email = ?, password = ?, role = ? WHERE id = ?",
         [
           user.name,
-          user.surname,
-          user.cellphone,
+          user.lastName,
+          user.cellPhone,
           user.email,
           user.password,
           user.role,

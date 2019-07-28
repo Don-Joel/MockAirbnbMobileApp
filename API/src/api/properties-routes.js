@@ -4,11 +4,11 @@ const express = require("express");
 const router = express.Router();
 
 //import properties class
-const User = require("../model/properties-model");
+const Property = require("../model/properties-model");
 
 //get all of the properties
 router.get("/get", (req, res) => {
-  User.prototype
+  Property.prototype
     .getAll()
     .then(users => {
       res.send(users);
@@ -20,7 +20,7 @@ router.get("/get", (req, res) => {
 
 // get the property by ID
 router.get("/getbyid/:id", (req, res) => {
-  User.prototype
+  Property.prototype
     .getById(req.params.id)
     .then(users => {
       res.send(users);
@@ -32,7 +32,7 @@ router.get("/getbyid/:id", (req, res) => {
 
 //create the property
 router.post("/create", (req, res) => {
-  User.prototype
+  Property.prototype
     .create(req.body)
     .then(users => {
       res.send(users);
@@ -42,9 +42,20 @@ router.post("/create", (req, res) => {
     });
 });
 
+router.get("/getByProviderId/:id", (req, res) => {
+  Property.prototype
+    .getByProviderId(req.params.id)
+    .then(providerId => {
+      res.send(providerId);
+    })
+    .catch(err => {
+      res.send(err);
+    });
+});
+
 //update the property
 router.post("/update/:id", (req, res) => {
-  User.prototype
+  Property.prototype
     .updateById(req.params.id, req.body)
     .then(users => {
       res.send(users);
@@ -54,9 +65,20 @@ router.post("/update/:id", (req, res) => {
     });
 });
 
+router.get("/getbyProviderId/:id", (req, res) => {
+  Property.prototype
+    .getByProviderId(req.params.id)
+    .then(provider => {
+      res.send(provider);
+    })
+    .catch(err => {
+      res.send(err);
+    });
+});
+
 //delete property
 router.delete("/delete/:id", (req, res) => {
-  User.prototype
+  Property.prototype
     .removeUser(req.body)
     .then(users => {
       res.send(users);

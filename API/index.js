@@ -22,6 +22,7 @@ app.use(
 
 //Routes
 app.use("/api/user", require("./src/api/user-routes"));
+app.use("/api/provider", require("./src/api/provider-routes"));
 app.use("/api/auth-user", require("./src/api/auth-user-routes"));
 app.use("/api/auth-provider", require("./src/api/auth-provider-routes"));
 app.use("/api/provider", require("./src/api/auth-provider-routes"));

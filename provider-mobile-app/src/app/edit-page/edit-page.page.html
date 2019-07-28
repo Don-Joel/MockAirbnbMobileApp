@@ -1,9 +1,52 @@
-<ion-header>
+<ion-header text-center>
   <ion-toolbar>
-    <ion-title>editPage</ion-title>
+    <ion-button
+      style="float:left"
+      shape="round"
+      color="danger"
+      (click)="navToPropertyDetails()"
+    >
+      Back
+    </ion-button>
+    <ion-title>Edit Booking</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding center text-center>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        Property Information
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-input placeholder="Name" [(ngModel)]="name" type="text">
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input placeholder="Price" [(ngModel)]="price" type="text">
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input placeholder="Location" [(ngModel)]="location" type="text">
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input placeholder="ImageUrl" [(ngModel)]="imageUrl" type="text">
+          </ion-input>
+        </ion-item>
+      </ion-list>
 
+      <ion-button
+        size="medium"
+        shape="round"
+        expand="full"
+        (click)="updateProperty()"
+      >
+        Make Edits <ion-icon slot="end" name="ios-arrow-forward"></ion-icon>
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
