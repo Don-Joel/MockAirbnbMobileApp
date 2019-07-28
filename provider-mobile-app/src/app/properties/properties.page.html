@@ -1,23 +1,23 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-button
-      shape="round"
-      size="small"
-      onclick="history.back()"
-      color="danger"
-      >Back</ion-button
-    >
-    <ion-title><i>Properties</i></ion-title>
-    <ion-button
-      shape="round"
-      size="small"
-      click="navToMenu()"
-      color="primary"
-      style="float:right"
-      >Menu</ion-button
-    >
+    <ion-toolbar >
+      <ion-button
+        shape="round"
+        size="small"
+        (click)="navToHome()"
+        color="danger"
+        >Sign Out</ion-button
+      >  
+      <ion-title><i>Properties</i></ion-title>
+      <ion-button
+        shape="round"
+        size="small"
+        (click)="navToProfile()"
+        color="primary"
+        style="float:right"
+        >Profile</ion-button
+      >
   </ion-toolbar>
-</ion-header>
+  </ion-header>
 <ion-content>
   <ion-card
     color="light"

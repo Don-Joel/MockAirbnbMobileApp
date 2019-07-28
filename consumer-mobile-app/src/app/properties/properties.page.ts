@@ -53,4 +53,11 @@ export class PropertiesPage implements OnInit {
   navToMenu(){
     this.navCtrl.navigateForward("menu")
   }
+
+  navToProfile(){
+    this.navCtrl.navigateForward("profile")
+  }
+  navToHome(){
+    this.navCtrl.navigateForward("home")
+  }
 }

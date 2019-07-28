@@ -1,34 +1,34 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-button
-      shape="round"
-      size="small"
-      onclick="history.back()"
-      color="danger"
-      >Back</ion-button
+    <ion-toolbar >
+      <ion-button
+        shape="round"
+        size="small"
+        (click)="navToHome()"
+        color="danger"
+        >Sign Out</ion-button
+      >  
+      <ion-title><i>Properties</i></ion-title>
+      <ion-button
+        shape="round"
+        size="small"
+        (click)="navToProfile()"
+        color="primary"
+        style="float:right"
+        >Profile</ion-button
+      >
+  </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-card
+      color="light"
+      *ngFor="let property of properties"
+      (click)="navToDetailsPage(property.id)"
     >
-    <ion-title><i>Properties</i></ion-title>
-    <ion-button
-      shape="round"
-      size="small"
-      click="navToMenu()"
-      color="primary"
-      style="float:right"
-      >Menu</ion-button
-    >
-</ion-toolbar>
-</ion-header>
-<ion-content>
-  <ion-card
-    color="light"
-    *ngFor="let property of properties"
-    (click)="navToDetailsPage(property.id)"
-  >
-    <img src="{{ property.imageUrl }}" />
-    <ion-card-header>
-      <ion-card-subtitle>{{ property.location }}</ion-card-subtitle>
-      <ion-card-title>{{ property.name }}</ion-card-title>
-      <ion-label float-left> {{ property.price }} </ion-label>
-    </ion-card-header>
-  </ion-card>
-</ion-content>
+      <img src="{{ property.imageUrl }}" />
+      <ion-card-header>
+        <ion-card-subtitle>{{ property.location }}</ion-card-subtitle>
+        <ion-card-title>{{ property.name }}</ion-card-title>
+        <ion-label float-left> {{ property.price }} </ion-label>
+      </ion-card-header>
+    </ion-card>
+  </ion-content>

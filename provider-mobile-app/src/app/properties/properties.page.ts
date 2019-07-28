@@ -48,8 +48,12 @@ export class PropertiesPage implements OnInit {
 
     });
   }
-  
-
+  navToProfile(){
+    this.navCtrl.navigateForward("profile");
+  }
+  navToHome(){
+    this.navCtrl.navigateForward("home");
+  }
   navToMenu(){
     this.navCtrl.navigateForward("menu")
   }
