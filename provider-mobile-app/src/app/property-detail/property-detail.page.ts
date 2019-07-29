@@ -87,36 +87,23 @@ export class PropertyDetailPage implements OnInit {
     console.log(params.get('propertyId'));
   }
 
-  deleteBookings(){
-    const ident = {
-      propertyId: +this.id
-    }
-    this.bookingService.removeAll(ident).then((response) => {
+
+  deleteListing(){
+    console.log(+this.id);
+    this.bookingService.removeAll(parseInt(this.id)).then((result: any) => {
+      console.log("deleted");
+    }).catch((err) => {
+      this.presentAlert(err);
+    });
+    this.propertiesService.remove(parseInt(this.id)).then((result : any) => {
+      console.log(+this.id);
       this.presentDeleteToast();
     }).catch((err) => {
       this.presentAlert(err);
     });
   }
 
-  deleteListing(){
-    const propId = {
-      propertyId: +this.id
-    };
-    const ident = {
-      id : +this.id
-    };
-    console.log(ident.id);
-    this.bookingService.removeAll(ident).then((result) => {
-      console.log("deleted");
-    }).catch((err) => {
-      this.presentAlert(err);
-    });
-    this.propertiesService.remove(propId).then((result) => {
-      console.log("deleted");
-    }).catch((err) => {
-      this.presentAlert(err);
-    });
-  }
+
   navToMenu(){
     this.navCtrl.navigateForward("menu");
   }

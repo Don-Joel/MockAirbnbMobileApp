@@ -73,9 +73,9 @@ updateById(Id, body){
     });
 };
 
-remove(Id){
+remove(id){
     return new Promise((resolve, reject) => {
-        this.http.post(environment.BaseUrl + '/api/properties/delete/' + Id, Id).subscribe(response =>{
+        this.http.post(environment.BaseUrl + '/api/properties/delete/', {"id" :id}).subscribe(response =>{
             resolve(response);
         }),
         err =>{
