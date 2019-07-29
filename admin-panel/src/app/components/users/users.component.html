@@ -1,0 +1,21 @@
+<h3>Users</h3>
+<div class="table-responsive">
+  <table class="table table-striped table-sm">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Cell Phone</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="table-row" *ngFor="let user of users">
+        <td>{{user.name}}</td>
+        <td>{{user.surName}}</td>
+        <td>{{user.email}}</td>
+        <td>+27 0{{user.cellPhone}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

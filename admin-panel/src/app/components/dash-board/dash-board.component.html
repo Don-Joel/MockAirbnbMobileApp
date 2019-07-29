@@ -1,14 +1,8 @@
 <div>
+
   <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand col-sm-4 col-md-3 mr-0" href="#"
-      >Airbnb Admin Panel</a
-    >
-    <input
-      class="form-control form-control-dark w-100"
-      type="text"
-      placeholder="Search"
-      aria-label="Search"
-    />
+    <a class="navbar-brand col-sm-4 col-md-3 mr-0" href="#">Airbnb Admin Panel</a>
+    <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
     <ul class="navbar-nav px-3">
       <li class="nav-item text-nowrap">
         <a class="nav-link" href="#">Sign out</a>
@@ -16,43 +10,38 @@
     </ul>
   </nav>
 
-  <div
-    style="margin-top:40px; height: calc(100vh - 40px);"
-    class="container-fluid"
-  >
+  <div style="margin-top:40px; height: calc(100vh - 40px);" class="container-fluid">
     <div style="margin-top:40px; height: calc(100vh - 40px);" class="row">
+
       <nav class="col-md-2 d-md-block bg-light sidebar">
-        
         <div class="sidebar-sticky">
           <ul class="nav flex-column">
-            <li *ngFor="let navItem of navItems">
-              <button
-                type="button"
-                class="btn btn-link"
-                (click)="navTo(navItem)"
-              >
-                {{ navItem.name }}
-              </button>
-              
+            <li *ngFor="let navItem of navItems" >
+              <button type="button" class="btn btn-link" (click)="navTo(navItem)">{{navItem.name}}</button>
             </li>
           </ul>
         </div>
       </nav>
-    </div>
-  
-    <main>
-        <div>
-            <div>
-              <div>
-                <div style="display: block">
-                  <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
-                    [legend]="barChartLegend" [chartType]="barChartType" (chartHover)="chartHovered($event)"
-                    (chartClick)="chartClicked($event)"></canvas>
-                </div>
-                <button mat-button mat-raised-button color="primary" (click)="randomize()">Update</button>
-              </div>
+
+      <main class="col-md-10">
+        <div
+          class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+          <h1 class="h2">Dashboard</h1>
+          <!-- <div class="btn-toolbar mb-2 mb-md-0">
+            <div class="btn-group mr-2">
+              <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+              <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
             </div>
-          </div>
-    </main>
+            <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+              <span data-feather="calendar"></span>
+              This week
+            </button>
+          </div> -->
+        </div>
+        <router-outlet></router-outlet>
+      </main>
 
+    </div>
+  </div>
 
+</div>

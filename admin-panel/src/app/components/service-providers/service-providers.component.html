@@ -1,0 +1,22 @@
+<h3>Service Provider</h3>
+<div class="table-responsive">
+  <table class="table table-striped table-sm">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Cell Phone</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="table-row" *ngFor="let sp of serviceProviders">
+        <td>{{sp.name.toUpperCase()}}</td>
+        <td>{{sp.lastName}}</td>
+        <td>{{sp.email}}</td>
+        <td>+27 0{{sp.cellPhone}}</td>
+        <td>{{sp.numberOfListings}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
