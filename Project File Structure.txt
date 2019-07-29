@@ -1,15 +1,22 @@
 | PROJECT             | COMPONENT          | FILE NAMES                                                                                                                                                                              |
 |---------------------|--------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Consumer mobile app | Login              | eg. Rubric-file-structure\consumer-mobile-app\consumer-mobile-app\src\pages\login & eg. Rubric-file-structure\consumer-mobile-app\consumer-mobile-app\src\providers\login               |
-| Consumer mobile app | Registration       | eg. Rubric-file-structure\consumer-mobile-app\consumer-mobile-app\src\pages\registration & eg. Rubric-file-structure\consumer-mobile-app\consumer-mobile-app\src\providers\registration |
-| Consumer mobile app | User Profile       | eg. Rubric-file-structure\consumer-mobile-app\consumer-mobile-app\src\pages\user & eg. Rubric-file-structure\consumer-mobile-app\consumer-mobile-app\src\providers\user                 |
-| Consumer mobile app | List of Properties | eg. Rubric-file-structure\consumer-mobile-app\consumer-mobile-app\src\pages\properties & eg. Rubric-file-structure\consumer-mobile-app\consumer-mobile-app\src\providers\properties     |
-| Provider mobile app | Login              | eg. Rubric-file-structure\provider-mobile-app\provider-mobile-app\src\pages\login & eg. Rubric-file-structure\provider-mobile-app\provider-mobile-app\src\providers\login               |
-| Provider mobile app | Registration       | eg. Rubric-file-structure\provider-mobile-app\provider-mobile-app\src\pages\registration & eg. Rubric-file-structure\provider-mobile-app\provider-mobile-app\src\providers\registration |
-| Provider mobile app | User Profile       | eg. Rubric-file-structure\provider-mobile-app\provider-mobile-app\src\pages\user & eg. Rubric-file-structure\provider-mobile-app\provider-mobile-app\src\providers\user                 |
-| Provider mobile app | List of Properties | eg. Rubric-file-structure\provider-mobile-app\provider-mobile-app\src\pages\properties & eg. Rubric-file-structure\provider-mobile-app\provider-mobile-app\src\providers\properties     |
-| Provider mobile app | List of Bookings   | eg. Rubric-file-structure\provider-mobile-app\provider-mobile-app\src\pages\bookings & eg. Rubric-file-structure\provider-mobile-app\provider-mobile-app\src\providers\bookings         |
-| Admin Panel         | Users              | eg. Rubric-file-structure\admin-panel\admin-panel\src\app\components\users & eg. Rubric-file-structure\admin-panel\admin-panel\src\app\services\users                                   |
-| Admin Panel         | Bookings           | eg. Rubric-file-structure\admin-panel\admin-panel\src\pages\bookings & eg. Rubric-file-structure\admin-panel\admin-panel\src\src\app\services\bookings                                  |
-| API                 | Users              | eg. Rubric-file-structure\API\api\src\pages\users & eg. Rubric-file-structure\api\api\provider-mobile-app\src\api\users                                                                 |
-| API                 | Bookings           | eg. Rubric-file-structure\API\api\src\pages\bookings & eg. Rubric-file-structure\api\api\provider-mobile-app\src\api\bookings                                                           |
+| Consumer mobile app | Login              | eg. Rubric-file-structure\consumer-mobile-app\src\app\home                |
+| Consumer mobile app | Registration       | eg. Rubric-file-structure\consumer-mobile-app\src\app\registration  |
+| Consumer mobile app | User Profile       | eg. Rubric-file-structure\consumer-mobile-app\src\app\profile            |
+| Consumer mobile app | List of Properties | eg. Rubric-file-structure\consumer-mobile-app\src\app\properties     |
+| Consumer mobile app |PropertyDetails/Booking| eg. Rubric-file-structure\consumer-mobile-app\src\app\property-detail    |
+| Provider mobile app | Login              | eg. Rubric-file-structure\provider-mobile-app\src\app\home               |
+| Provider mobile app | Registration       | eg. Rubric-file-structure\provider-mobile-app\src\app\registration  |
+| Provider mobile app | User Profile       | eg. Rubric-file-structure\provider-mobile-app\src\app\profile            |
+| Provider mobile app | List of Properties | eg. Rubric-file-structure\provider-mobile-app\src\app\properties     |
+| Provider mobile app | List of Bookings   | eg. Rubric-file-structure\provider-mobile-app\src\app\bookings         |
+| Provider mobile app |PropertyDetails/delete| eg. Rubric-file-structure\provider-mobile-app\src\app\property-detail  
+| Provider mobile app | Create Property    | eg. Rubric-file-structure\provider-mobile-app\src\app\create-property     |
+| Provider mobile app | Edit Property      | eg. Rubric-file-structure\provider-mobile-app\src\app\edit-page     |        |
+| Admin Panel         | Users              | eg. Rubric-file-structure\admin-panel\src\app\components\users  
+| Admin Panel         | Providers          | eg. Rubric-file-structure\admin-panel\src\app\components\service-providers                               |
+| Admin Panel         | Bookings           | eg. Rubric-file-structure\admin-panel\src\app\components\requests
+| Admin Panel         | Properties         | eg. Rubric-file-structure\admin-panel\src\app\components\properties                                |
+| API                 | Users              | eg. Rubric-file-structure\API\src\api\users-routes & Rubric-file-structure\API\src\api\auth-user-routes & Rubric-file-structure\API\src\services\auth-user-service & Rubric-file-structure\API\src\model\user-model
+| API                 | Providers          | eg. Rubric-file-structure\API\src\api\provider-routes & Rubric-file-structure\API\src\api\auth-provider-routes & Rubric-file-structure\API\src\services\auth-provider-service & Rubric-file-structure\API\src\model\provider-model                                                              |
+| API                 | Bookings           | eg. Rubric-file-structure\API\src\api\booking-routes &&  Rubric-file-structure\API\src\models\bookings-model                                                         |
