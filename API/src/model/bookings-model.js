@@ -54,6 +54,23 @@ module.exports = class BookingRequests {
     });
   }
 
+  removeAll(propertyId) {
+    return new Promise((reject, resolve) => {
+      mysqlConn.query(
+        "DELETE FROM booking WHERE propertyId = ?",
+        propertyId,
+        (err, res) => {
+          if (err) {
+            console.log("error: ", err);
+            reject(err);
+          } else {
+            resolve(res);
+          }
+        }
+      );
+    });
+  }
+
   //Read by ID
   getById(id) {
     return new Promise((reject, resolve) => {

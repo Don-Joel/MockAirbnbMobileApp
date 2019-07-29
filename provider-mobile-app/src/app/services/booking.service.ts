@@ -70,9 +70,21 @@ updateById(Id, body){
     });
 };
 
-remove(Id){
+remove(id){
     return new Promise((resolve, reject) => {
-        this.http.post(environment.BaseUrl + '/api/bookings/delete/' + Id, Id).subscribe(response =>{
+        this.http.post(environment.BaseUrl + '/api/bookings/delete/', {"id": id}).subscribe(response =>{
+            resolve(response);
+        }),
+        err =>{
+            console.log(err);
+            reject(err.msg);
+        }
+    });
+};
+
+removeAll(propertyId){
+    return new Promise((resolve, reject) => {
+        this.http.post(environment.BaseUrl + '/api/bookings/deleteAll/', {"propertyId":propertyId}).subscribe(response =>{
             resolve(response);
         }),
         err =>{

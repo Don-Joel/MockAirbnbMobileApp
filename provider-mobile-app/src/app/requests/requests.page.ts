@@ -55,7 +55,6 @@ export class RequestsPage implements OnInit {
         this.presentAlert(err);
       });
   }
-
   updateAccept(bookingId) {
     const stat = {
       status: "ACCEPTED",

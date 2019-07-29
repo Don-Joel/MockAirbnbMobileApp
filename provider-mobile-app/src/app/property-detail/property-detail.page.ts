@@ -21,6 +21,7 @@ export class PropertyDetailPage implements OnInit {
   public userId : number;
   public location: string;
   public imageUrl: string;
+  //propertyId
   public id : string;
 
 
@@ -86,11 +87,26 @@ export class PropertyDetailPage implements OnInit {
     console.log(params.get('propertyId'));
   }
 
-  deleteListing(){
-    this.propertiesService.remove(localStorage.getItem("propertyId")).then((response) => {
+  deleteBookings(){
+    const ident = {
+      propertyId: +this.id
+    }
+    this.bookingService.removeAll(ident).then((response) => {
       this.presentDeleteToast();
     }).catch((err) => {
       this.presentAlert(err);
+    });
+  }
+
+  deleteProperty(){
+    const ident = {
+      propertyId: +this.id
+    }
+    console.log(ident.propertyId);
+    this.deleteBookings();
+    this.propertiesService.remove(ident).then((result) => {
+    }).catch((err) => {
+      
     });
   }
   navToMenu(){

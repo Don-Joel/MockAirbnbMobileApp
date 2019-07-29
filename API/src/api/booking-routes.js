@@ -67,9 +67,21 @@ router.post("/update/:id", (req, res) => {
 });
 
 //delete booking
-router.delete("/delete/:id", (req, res) => {
+router.post("/delete/:id", (req, res) => {
   Booking.prototype
-    .removeUser(req.body)
+    .remove(req.body)
+    .then(bookings => {
+      res.send(bookings);
+    })
+    .catch(err => {
+      res.send(err);
+    });
+});
+
+//delete booking
+router.post("/deleteAll/", (req, res) => {
+  Booking.prototype
+    .removeAll(req.body.propertyId)
     .then(bookings => {
       res.send(bookings);
     })
