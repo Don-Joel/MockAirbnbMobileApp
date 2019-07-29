@@ -98,15 +98,23 @@ export class PropertyDetailPage implements OnInit {
     });
   }
 
-  deleteProperty(){
+  deleteListing(){
+    const propId = {
+      propertyId: +this.id
+    };
     const ident = {
-      id: +this.id
-    }
+      id : +this.id
+    };
     console.log(ident.id);
-    this.deleteBookings();
-    this.propertiesService.remove(ident).then((result) => {
+    this.bookingService.removeAll(ident).then((result) => {
+      console.log("deleted");
     }).catch((err) => {
-      
+      this.presentAlert(err);
+    });
+    this.propertiesService.remove(propId).then((result) => {
+      console.log("deleted");
+    }).catch((err) => {
+      this.presentAlert(err);
     });
   }
   navToMenu(){
