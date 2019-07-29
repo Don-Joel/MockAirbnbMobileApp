@@ -35,6 +35,14 @@ export class CreatePropertyPage implements OnInit {
     await alert.present();
   }
 
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'A listing has been created!',
+      duration: 2000
+    });
+    toast.present();
+  }
+
   createProperty() {
     const listing = {
       name: this.name,
@@ -46,10 +54,14 @@ export class CreatePropertyPage implements OnInit {
     this.propertiesService
       .create(listing)
       .then(response => {
-        this.navCtrl.navigateForward("properties");
+        this.presentToast();
       })
       .catch(err => {
         this.presentAlert(err);
       });
+  }
+
+  navToProperty(){
+    this.navCtrl.navigateForward("properties");
   }
 }

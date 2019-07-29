@@ -1,0 +1,30 @@
+<ion-content>
+  <ion-header text-center>
+    <ion-toolbar>
+      <ion-button
+        shape="round"
+        size="small"
+        onclick="history.back()"
+        color="danger"
+        style="float:left"
+        >Back</ion-button
+      >
+      <ion-title><i>Booking Requests</i></ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-card color="light" *ngFor="let b of book">
+    <ion-card-header>
+      <ion-label float-left>Status: {{ b.status }} </ion-label>
+      <ion-label float-left>Booking Id: {{ b.id }} </ion-label>
+      <ion-label float-left>Check-in: {{ b.dateFrom }} </ion-label>
+      <ion-label float-left>Check-out: {{ b.dateTo }} </ion-label>
+
+      <ion-button color="success" (click)="updateAccept()"> ACCEPT</ion-button>
+
+      <ion-button color="danger" style="float:right" (click)="updateDeny()"
+        >DENY</ion-button
+      >
+    </ion-card-header>
+  </ion-card>
+</ion-content>

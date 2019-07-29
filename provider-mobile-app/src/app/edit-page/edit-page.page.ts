@@ -12,6 +12,7 @@ export class EditPagePage implements OnInit {
   constructor(
     private navCtrl: NavController,
     private alertCtrl: AlertController,
+    public toastController: ToastController,
     private propertiesService: PropertiesService
   ) {}
 
@@ -20,6 +21,16 @@ export class EditPagePage implements OnInit {
   public price: string;
   public imageUrl: string;
   public propertyId: number = parseInt(localStorage.getItem("propertyId"));
+
+
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'Your changes have been saved.',
+      duration: 2000
+    });
+    toast.present();
+  }
+
 
 
   async presentAlert(err) {
@@ -49,7 +60,6 @@ export class EditPagePage implements OnInit {
   }
 
   updateProperty() {
-    debugger
     const update = {
       name: this.name,
       location: this.location,
@@ -61,8 +71,7 @@ export class EditPagePage implements OnInit {
     this.propertiesService
       .updateById(this.propertyId, update)
       .then(response => {
-        console.log(response);
-        this.navCtrl.navigateForward("property-detail");
+        this.presentToast();
       })
       .catch(err => {
         this.presentAlert(err);

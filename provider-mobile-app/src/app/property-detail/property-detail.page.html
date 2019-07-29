@@ -9,10 +9,9 @@
         >Back</ion-button
       >
       <h1 text-center>{{ name }}</h1>
+
     </ion-toolbar>
   </ion-header>
-
-  <ion-content>
     <ion-card>
       <ion-slides>
         <ion-slide>
@@ -40,15 +39,23 @@
       expand="full"
       (click)="navToEditPage()"
     >
-      Make Edits <ion-icon slot="end" name="ios-arrow-forward"></ion-icon>
+     Edit Listing <ion-icon slot="end" name="ios-arrow-forward"></ion-icon>
     </ion-button>
     <ion-button
       size="medium"
       shape="round"
       expand="full"
-      (click)="navToBookingRequests()"
+      (click)="navToRequest(propertyId)"
     >
-      Booking Requests <ion-icon slot="end" name="ios-arrow-forward"></ion-icon>
+      Manage Booking Requests <ion-icon slot="end" name="ios-arrow-forward"></ion-icon>
     </ion-button>
-  </ion-content>
+    <ion-button
+      size="medium"
+      shape="round"
+      expand="full"
+      color="danger"
+      (click)="deleteListing()"
+    >
+      Remove Listing<ion-icon slot="end" name="ios-arrow-forward"></ion-icon>
+    </ion-button>
 </ion-content>

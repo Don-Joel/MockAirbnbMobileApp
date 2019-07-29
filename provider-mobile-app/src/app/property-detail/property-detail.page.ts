@@ -15,13 +15,13 @@ import { ToastController } from '@ionic/angular';
 })
 export class PropertyDetailPage implements OnInit {
 
-  public propertyId : number;
-  public id: number;
+  public propertyId : string;
   public name: string;
   public price: number;
   public userId : number;
   public location: string;
   public imageUrl: string;
+  public id : string;
 
 
 
@@ -60,24 +60,39 @@ export class PropertyDetailPage implements OnInit {
     toast.present();
   }
 
+  async presentDeleteToast() {
+    const toast = await this.toastController.create({
+      message: 'Listing has been removed.',
+      duration: 2000
+    });
+    toast.present();
+  }
+
 
   ngOnInit() {
     const params = new URLSearchParams(location.search);
-    const id = +params.get('propertyId');
-    localStorage.setItem("propertyId", params.get('propertyId'));
+    this.id = params.get('propertyId');
+    localStorage.setItem("propertyId", this.id);
 
-    this.propertiesService.getById(id).then((response) => {
+    this.propertiesService.getById(this.id).then((response) => {
       this.name = response[0].name;
       this.price = parseInt(response[0].price);
       this.location = response[0].location;
       this.imageUrl = response[0].imageUrl;
-      this.propertyId = id;
+      this.propertyId = this.id;
     }).catch((err) => {
       this.presentAlert(err);
     });
     console.log(params.get('propertyId'));
   }
 
+  deleteListing(){
+    this.propertiesService.remove(localStorage.getItem("propertyId")).then((response) => {
+      this.presentDeleteToast();
+    }).catch((err) => {
+      this.presentAlert(err);
+    });
+  }
   navToMenu(){
     this.navCtrl.navigateForward("menu");
   }
@@ -87,6 +102,13 @@ export class PropertyDetailPage implements OnInit {
 
   navToEditPage(){
     this.navCtrl.navigateForward("edit-page");
+  }
+
+  navToRequest(pageId){
+    this.navCtrl.navigateForward("requests",  {
+      queryParams: {
+       propertyId : pageId
+      } });
   }
 
 }

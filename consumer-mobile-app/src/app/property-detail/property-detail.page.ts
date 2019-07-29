@@ -104,7 +104,7 @@ export class PropertyDetailPage implements OnInit {
             dateTo : this.dateTo,
             userId : +localStorage.getItem("userId"),
             propertyId : this.propertyId,
-            status : this.status.accepted
+            status : this.status.newBooking
       };
       this.bookingService.create(booker).then((response) => {
         this.presentToast();
