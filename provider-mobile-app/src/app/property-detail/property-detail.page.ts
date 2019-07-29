@@ -100,9 +100,9 @@ export class PropertyDetailPage implements OnInit {
 
   deleteProperty(){
     const ident = {
-      propertyId: +this.id
+      id: +this.id
     }
-    console.log(ident.propertyId);
+    console.log(ident.id);
     this.deleteBookings();
     this.propertiesService.remove(ident).then((result) => {
     }).catch((err) => {
