@@ -63,6 +63,7 @@ export class RequestsPage implements OnInit {
     this.bookingService
       .updateById(+bookingId, stat)
       .then(response => {
+        this.ngOnInit();
         this.presentGoodToast();
       })
       .catch(err => {
@@ -79,6 +80,7 @@ export class RequestsPage implements OnInit {
     this.bookingService
       .updateById(+bookingId, stat)
       .then(response => {
+        this.ngOnInit();
         this.presentBadToast();
       })
       .catch(err => {
