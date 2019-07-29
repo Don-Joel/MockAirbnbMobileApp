@@ -8,7 +8,8 @@ import { RouterModule } from '@angular/router';
 import { ServiceProvidersComponent } from './components/service-providers/service-providers.component';
 import { HomeComponent } from './components/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
-import { PropertiesComponent } from './properties/properties.component';
+import { PropertiesComponent } from 'src/app/components/properties/properties.component';
+import { RequestsComponent } from 'src/app/components/requests/requests.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { PropertiesComponent } from './properties/properties.component';
     DashBoardComponent,
     ServiceProvidersComponent,
     HomeComponent,
-    PropertiesComponent
+    PropertiesComponent,
+    RequestsComponent
   ],
   imports: [
     BrowserModule,

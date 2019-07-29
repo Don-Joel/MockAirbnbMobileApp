@@ -1,0 +1,24 @@
+<h3>Booking Requests</h3>
+<div class="table-responsive">
+  <table class="table table-striped table-sm">
+    <thead>
+      <tr>
+        <th>Date From</th>
+        <th>Date To</th>
+        <th>Status</th>
+        <th>User ID</th>
+        <th>Property ID</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="table-row" *ngFor="let booking of bookings">
+        <td>{{booking.dateFrom}}</td>
+        <td>{{booking.dateTo}}</td>
+        <td>{{booking.status}}</td>
+        <td>{{booking.userId}}</td>
+        <td>{{booking.propertyId}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

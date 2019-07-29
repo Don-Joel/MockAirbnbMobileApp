@@ -28,7 +28,7 @@ export class DashBoardComponent implements OnInit {
     },
     {
       name: 'Booking Requests',
-      rout: '/booking-requests'
+      rout: '/requests'
     }
 
   ]
