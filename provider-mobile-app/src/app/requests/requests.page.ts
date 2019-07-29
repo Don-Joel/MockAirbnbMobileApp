@@ -56,15 +56,13 @@ export class RequestsPage implements OnInit {
       });
   }
 
-  updateAccept() {
-    const params = new URLSearchParams(location.search);
-    const propId = params.get("propertyId");
+  updateAccept(bookingId) {
     const stat = {
-      status: "ACCEPTED"
+      status: "ACCEPTED",
+      id: +bookingId
     };
-
     this.bookingService
-      .updateById(+propId, stat)
+      .updateById(+bookingId, stat)
       .then(response => {
         this.presentGoodToast();
       })
@@ -73,16 +71,14 @@ export class RequestsPage implements OnInit {
       });
   }
 
-  updateDeny() {
-    const params = new URLSearchParams(location.search);
-    const propId = params.get("propertyId");
+  updateDeny(bookingId) {
     const stat = {
       status: "DENIED",
-      id: +propId
+      id: +bookingId
     };
 
     this.bookingService
-      .updateById(+propId, stat)
+      .updateById(+bookingId, stat)
       .then(response => {
         this.presentBadToast();
       })
@@ -90,4 +86,23 @@ export class RequestsPage implements OnInit {
         this.presentAlert(err);
       });
   }
+
+  ionRefresh(event) {
+    console.log('Pull Event Triggered!');
+    setTimeout(() => {
+      console.log('Async operation has ended');
+
+      //complete()  signify that the refreshing has completed and to close the refresher
+      event.target.complete();
+    }, 2000);
+}
+ionPull(event){
+  //Emitted while the user is pulling down the content and exposing the refresher.
+  console.log('ionPull Event Triggered!');
+}
+ionStart(event){
+  //Emitted when the user begins to start pulling down.
+  console.log('ionStart Event Triggered!');
+}
+
 }
