@@ -1,10 +1,12 @@
-<ion-header>
+<ion-content>
+<ion-header text-center>
     <ion-toolbar >
       <ion-button
         shape="round"
         size="small"
         (click)="navToHome()"
         color="danger"
+        style="float:left"
         >Sign Out</ion-button
       >  
       <ion-title><i>Properties</i></ion-title>
@@ -18,7 +20,7 @@
       >
   </ion-toolbar>
   </ion-header>
-  <ion-content>
+
     <ion-card
       color="light"
       *ngFor="let property of properties"
@@ -28,7 +30,7 @@
       <ion-card-header>
         <ion-card-subtitle>{{ property.location }}</ion-card-subtitle>
         <ion-card-title>{{ property.name }}</ion-card-title>
-        <ion-label float-left> {{ property.price }} </ion-label>
+        <ion-label float-left> {{ property.price }} <i>ZAR/Night</i> </ion-label>
       </ion-card-header>
     </ion-card>
   </ion-content>
