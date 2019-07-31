@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { PropertiesService } from ".././services/properties.service";
 import { Properties } from ".././models/properties-models";
 import { NavController, AlertController } from "@ionic/angular";
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: "app-properties",
@@ -21,8 +22,11 @@ export class PropertiesPage implements OnInit {
   constructor(
     private alertCtrl: AlertController,
     private navCtrl: NavController,
-    private propertiesService: PropertiesService
-  ) {}
+    private propertiesService: PropertiesService,
+    private authService : AuthService
+  ) {
+    
+  }
 
   async presentAlert(err) {
     const alert = await this.alertCtrl.create({
@@ -38,6 +42,10 @@ export class PropertiesPage implements OnInit {
     }).catch((err) => {
       this.presentAlert(err);
     });
+  }
+
+  logOut(){
+    this.authService.logOut();
   }
 
   navToDetailsPage(pageId){
@@ -59,5 +67,6 @@ export class PropertiesPage implements OnInit {
   }
   navToHome(){
     this.navCtrl.navigateForward("home")
+    this.logOut();
   }
 }
