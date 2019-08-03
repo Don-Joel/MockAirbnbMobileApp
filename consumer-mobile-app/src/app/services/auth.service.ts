@@ -37,26 +37,27 @@ export class AuthService {
     localStorage.setItem("jwt", "");
   }
   //working login
-    login(authUser) {
-      return new Promise((resolve, reject) => {
-        const headers = new HttpHeaders();
-        this.http
-          .post(environment.BaseUrl + '/api/auth-user/login', authUser, { headers })
-          .subscribe(
-            (response: any) => {
-              console.log(response.id);
-              console.log(response);
-              localStorage.setItem("userId", response.id);
-              localStorage.setItem("isLoggedIn", "true");
-              resolve(response);
-            },
-            err => {
-
-              reject(err);
-            }
-          );
-      });
-    }
+  login(authUser) {
+    return new Promise((resolve, reject) => {
+      const headers = new HttpHeaders();
+      this.http
+        .post(environment.BaseUrl + "/api/auth-user/login", authUser, {
+          headers
+        })
+        .subscribe(
+          (response: any) => {
+            console.log(response.id);
+            console.log(response);
+            localStorage.setItem("userId", response.id);
+            localStorage.setItem("isLoggedIn", "true");
+            resolve(response);
+          },
+          err => {
+            reject(err);
+          }
+        );
+    });
+  }
   register(authUser) {
     return new Promise((resolve, reject) => {
       const headers = new HttpHeaders();

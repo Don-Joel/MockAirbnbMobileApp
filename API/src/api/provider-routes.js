@@ -65,4 +65,18 @@ router.delete("/delete/:id", (req, res) => {
     });
 });
 
+router.post("/image/:userId", (req, res) => {
+  const userId = req.params.userId;
+  const url = "http://localhost:3000/uploads/" + req.file.filename;
+
+  Provider.prototype
+    .setImageUrl(userId, url)
+    .then(user => {
+      res.json({ user });
+    })
+    .catch(err => {
+      res.status(400).json({ msg: err });
+    });
+});
+
 module.exports = router;

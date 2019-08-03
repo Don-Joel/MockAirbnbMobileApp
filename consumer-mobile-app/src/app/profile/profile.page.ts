@@ -10,7 +10,7 @@ import { ElementFinder } from "protractor";
   templateUrl: "./profile.page.html",
   styleUrls: ["./profile.page.scss"]
 })
-export class ProfilePage implements OnInit {
+export class ProfilePage{
   public user = new User();
   public name : string;
   public lastName: string;
@@ -35,7 +35,7 @@ export class ProfilePage implements OnInit {
 
   //basically constructor. ngOnInit is a constructor method but does all the work.
   // It is considered bad practice to carry all the work in the default constructor
-  ngOnInit() {
+  ionViewDidEnter(){
     this.userService
       .getById(parseInt(localStorage.getItem("userId")))
       .then((response: any) => {

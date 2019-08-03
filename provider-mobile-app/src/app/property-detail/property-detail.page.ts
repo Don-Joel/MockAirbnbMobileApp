@@ -8,12 +8,13 @@ import { ToastController } from '@ionic/angular';
 
 
 
+
 @Component({
   selector: "app-properties",
   templateUrl: "./property-detail.page.html",
   styleUrls: ["./property-detail.page.scss"]
 })
-export class PropertyDetailPage implements OnInit {
+export class PropertyDetailPage{
 
   public propertyId : string;
   public name: string;
@@ -70,7 +71,7 @@ export class PropertyDetailPage implements OnInit {
   }
 
 
-  ngOnInit() {
+  ionViewDidEnter() {
     const params = new URLSearchParams(location.search);
     this.id = params.get('propertyId');
     localStorage.setItem("propertyId", this.id);
@@ -86,12 +87,13 @@ export class PropertyDetailPage implements OnInit {
     });
     console.log(params.get('propertyId'));
   }
-
+   
 
   deleteListing(){
     console.log(+this.id);
     this.bookingService.removeAll(parseInt(this.id)).then((result: any) => {
       console.log("deleted");
+      //this.ionViewDidEnter();
     }).catch((err) => {
       this.presentAlert(err);
     });

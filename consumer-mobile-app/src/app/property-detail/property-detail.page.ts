@@ -13,7 +13,7 @@ import { ToastController } from '@ionic/angular';
   templateUrl: "./property-detail.page.html",
   styleUrls: ["./property-detail.page.scss"]
 })
-export class PropertyDetailPage implements OnInit {
+export class PropertyDetailPage{
 
   public propertyId : number;
   public id: number;
@@ -62,7 +62,7 @@ export class PropertyDetailPage implements OnInit {
   }
 
 
-  ngOnInit() {
+  ionViewDidEnter(){
     const params = new URLSearchParams(location.search)
     const id = +params.get('propertyId');
 
@@ -79,7 +79,6 @@ export class PropertyDetailPage implements OnInit {
     });
     console.log(params.get('propertyId'));
   }
-
   navToMenu(){
     this.navCtrl.navigateForward("menu");
   }
@@ -112,11 +111,6 @@ export class PropertyDetailPage implements OnInit {
       }).catch((err) => {
         this.presentAlert(err);
       });
-  
+
     }
-  
-
-
-
-
 }

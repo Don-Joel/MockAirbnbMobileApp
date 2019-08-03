@@ -8,18 +8,18 @@ import { NavController, AlertController } from "@ionic/angular";
   templateUrl: "./properties.page.html",
   styleUrls: ["./properties.page.scss"]
 })
-export class PropertiesPage implements OnInit {
+export class PropertiesPage{
   public id: number;
   public name: string;
   public price: string;
   public location: string;
   public imageUrl: string;
-  public userId : number;
+  public userId: number;
   public params = new URLSearchParams(location.search);
-  public providerId : number = +this.params.get('propertyId');
+  public providerId: number = +this.params.get("propertyId");
 
   //array
-  public properties : Array<Properties> = [];
+  public properties: Array<Properties> = [];
 
   constructor(
     private alertCtrl: AlertController,
@@ -35,34 +35,36 @@ export class PropertiesPage implements OnInit {
     await alert.present();
   }
 
-  ngOnInit() {
-    this.userId = +localStorage.getItem('userId');
-    this.propertiesService.getByProviderId(this.userId).then((response : any) => {
-      this.properties = response;
-    }).catch((err) => {
-      this.presentAlert(err);
-    });
+  ionViewDidEnter() {
+    this.userId = +localStorage.getItem("userId");
+    this.propertiesService
+      .getByProviderId(this.userId)
+      .then((response: any) => {
+        this.properties = response;
+      })
+      .catch(err => {
+        this.presentAlert(err);
+      });
   }
 
-  navToDetailsPage(pageId){
+
+  navToDetailsPage(pageId) {
     this.navCtrl.navigateForward("property-detail", {
       queryParams: {
-       propertyId : pageId
-      }    
+        propertyId: pageId
+      }
     });
-    
   }
-  navToProfile(){
+  navToProfile() {
     this.navCtrl.navigateForward("profile");
   }
-  navToHome(){
+  navToHome() {
     this.navCtrl.navigateForward("home");
   }
-  navToMenu(){
+  navToMenu() {
     this.navCtrl.navigateForward("menu");
   }
-  navToCreateListing(){
+  navToCreateListing() {
     this.navCtrl.navigateForward("create-property");
   }
- 
 }

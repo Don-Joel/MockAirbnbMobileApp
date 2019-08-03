@@ -9,7 +9,7 @@ import { AuthService } from '../services/auth.service';
   templateUrl: "./properties.page.html",
   styleUrls: ["./properties.page.scss"]
 })
-export class PropertiesPage implements OnInit {
+export class PropertiesPage{
   public id: number;
   public name: string;
   public price: string;
@@ -36,7 +36,7 @@ export class PropertiesPage implements OnInit {
     await alert.present();
   }
 
-  ngOnInit() {
+  ionViewDidEnter(){
     this.propertiesService.getAll().then((response : any) => {
       this.properties = response;
     }).catch((err) => {

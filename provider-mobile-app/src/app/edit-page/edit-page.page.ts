@@ -8,7 +8,7 @@ import { PropertiesService } from "../services/properties.service";
   templateUrl: "./edit-page.page.html",
   styleUrls: ["./edit-page.page.scss"]
 })
-export class EditPagePage implements OnInit {
+export class EditPagePage{
   constructor(
     private navCtrl: NavController,
     private alertCtrl: AlertController,
@@ -41,7 +41,7 @@ export class EditPagePage implements OnInit {
     await alert.present();
   }
 
-  ngOnInit() {
+  ionViewDidEnter(){
     this.propertiesService
       .getById(this.propertyId)
       .then(response => {
@@ -72,9 +72,17 @@ export class EditPagePage implements OnInit {
       .updateById(this.propertyId, update)
       .then(response => {
         this.presentToast();
+        this.ionViewDidEnter();
       })
       .catch(err => {
         this.presentAlert(err);
       });
+  }
+
+  navToDetail(pageId){
+    this.navCtrl.navigateForward("property-detail",  {
+      queryParams: {
+       propertyId : pageId
+      } });
   }
 }

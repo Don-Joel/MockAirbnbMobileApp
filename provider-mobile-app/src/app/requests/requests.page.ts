@@ -9,7 +9,7 @@ import { Booking } from "../models/booking-models";
   templateUrl: "./requests.page.html",
   styleUrls: ["./requests.page.scss"]
 })
-export class RequestsPage implements OnInit {
+export class RequestsPage{
   constructor(
     public navCtrl: NavController,
     public toastController: ToastController,
@@ -43,7 +43,7 @@ export class RequestsPage implements OnInit {
     toast.present();
   }
 
-  ngOnInit() {
+  ionViewDidEnter(){
     const params = new URLSearchParams(location.search);
     const id = params.get("propertyId");
     this.bookingService
@@ -63,7 +63,7 @@ export class RequestsPage implements OnInit {
     this.bookingService
       .updateById(+bookingId, stat)
       .then(response => {
-        this.ngOnInit();
+        this.ionViewDidEnter();
         this.presentGoodToast();
       })
       .catch(err => {
@@ -80,7 +80,7 @@ export class RequestsPage implements OnInit {
     this.bookingService
       .updateById(+bookingId, stat)
       .then(response => {
-        this.ngOnInit();
+        this.ionViewDidEnter() ;
         this.presentBadToast();
       })
       .catch(err => {

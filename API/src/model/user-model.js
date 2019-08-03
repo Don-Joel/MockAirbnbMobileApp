@@ -56,6 +56,21 @@ module.exports = class User {
     });
   }
 
+  setImageUrl(userId, url) {
+    return new Promise((resolve, reject) => {
+      User.prototype.updateImage(userId, url, (err, res) => {
+        if (err) {
+          reject(err);
+        }
+        resolve(res);
+      });
+    });
+  }
+
+  updateImage(userId, imgUrl) {
+    return new Promise((resolve, reject) => {});
+  }
+
   updateById(userId, user) {
     return new Promise((resolve, reject) => {
       mysqlConn.query(

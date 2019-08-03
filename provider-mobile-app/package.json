@@ -29,6 +29,7 @@
     "cordova-ios": "5.0.1",
     "cordova-plugin-datepicker": "^0.9.3",
     "core-js": "^2.5.4",
+    "multer": "^1.4.2",
     "rxjs": "~6.5.1",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.29"

@@ -9,7 +9,7 @@ import { Properties } from ".././models/properties-models";
   templateUrl: "./create-property.page.html",
   styleUrls: ["./create-property.page.scss"]
 })
-export class CreatePropertyPage implements OnInit {
+export class CreatePropertyPage{
   constructor(
     private navCtrl: NavController,
     private alertCtrl: AlertController,
@@ -25,7 +25,7 @@ export class CreatePropertyPage implements OnInit {
   public userId: number;
   public providerId: number = +localStorage.getItem("userId");
 
-  ngOnInit() {}
+  ionViewDidEnter() {}
 
   async presentAlert(err) {
     const alert = await this.alertCtrl.create({

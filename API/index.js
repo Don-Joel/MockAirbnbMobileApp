@@ -17,6 +17,9 @@ app.use(
   })
 );
 
+//upload image
+//const multipartMiddleware = multipart({ uploadDir: "./uploads" });
+
 //middleware function that has access to req and res
 //app.use(jwtAuth);
 
